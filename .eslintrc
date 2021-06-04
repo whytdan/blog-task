@@ -1,0 +1,24 @@
+{
+	"parser": "babel-eslint",
+	"extends": [
+		"airbnb",
+		"prettier",
+		"plugin:react/recommended"
+	],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": ["warn", {"singleQuote": true}],
+		"no-unused-vars": "warn",
+        "react/jsx-filename-extension": "off",
+        "react/no-array-index-key": "off", 
+        "react/prop-types": "off",
+        "no-console":"off",
+        "func-names":"off",
+        "import/prefer-default-export": "off",
+        "no-undef":"off"
+	},
+	"env": {
+		"es6": true,
+		"browser":true
+	}
+}
