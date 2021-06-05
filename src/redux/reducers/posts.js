@@ -5,11 +5,9 @@ import {
 } from '../actions/actionTypes';
 
 const INIT_STATE = {
-  posts: {
-    data: [],
-    error: null,
-    isLoading: false,
-  },
+  data: [],
+  error: null,
+  isLoading: false,
 };
 
 export default function postsReducer(state = INIT_STATE, action) {
