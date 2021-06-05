@@ -15,7 +15,10 @@
         "no-console":"off",
         "func-names":"off",
         "import/prefer-default-export": "off",
-        "no-undef":"off"
+        "no-undef":"off",
+		"arrow-body-style":"off",
+		"object-shorthand":"warn",
+		"no-use-before-define": "off"
 	},
 	"env": {
 		"es6": true,
