@@ -15,28 +15,21 @@ export default function postsReducer(state = INIT_STATE, action) {
     case FETCH_POSTS_SUCCESS:
       return {
         ...state,
-        courses: {
-          error: null,
-          data: action.courses,
-          loading: false,
-        },
+        error: null,
+        data: action.payload,
+        loading: false,
       };
     case FETCH_POSTS_ERROR:
       return {
         ...state,
-        courses: {
-          error: action.payload,
-          data: [],
-          loading: false,
-        },
+        data: [],
+        error: action.payload,
+        loading: false,
       };
     case FETCH_POSTS_LOADING:
       return {
         ...state,
-        courses: {
-          ...state.courses,
-          loading: true,
-        },
+        loading: true,
       };
     default:
       return state;

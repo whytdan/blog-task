@@ -6,6 +6,7 @@ const { REACT_APP_API_URL: URL } = process.env;
 console.log(process.env);
 
 const fetchPostsSuccess = (posts) => {
+  console.log(posts);
   return {
     type: FETCH_POSTS_SUCCESS,
     payload: posts,
@@ -23,7 +24,7 @@ export const fetchPosts = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${URL}/posts/?_limit=20&_offset=0`);
-      disspatch(fetchPostsSuccess(data));
+      dispatch(fetchPostsSuccess(data));
     } catch (error) {
       dispatch(fetchPostsError(error.message));
     }
