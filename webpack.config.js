@@ -39,8 +39,8 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
+    hot: true,
     port: 3000,
-    hot: isDev,
   },
   // ?if true, than source code(not transpiled one) will be shown in chrome's dev tool section
   devtool: isDev ? 'source-map' : false,
