@@ -18,7 +18,8 @@
         "no-undef":"off",
 		"arrow-body-style":"off",
 		"object-shorthand":"warn",
-		"no-use-before-define": "off"
+		"no-use-before-define": "off",
+		"no-shadow": "off"
 	},
 	"env": {
 		"es6": true,

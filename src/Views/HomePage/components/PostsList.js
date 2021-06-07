@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from '../../../redux/actions/posts';
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
+import { fetchPosts, fetchPostsLoading } from '../../../redux/actions/posts';
 import PostCard from './PostCard';
 import Loader from '../../../components/Loader';
 
@@ -11,19 +13,33 @@ const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
+  pagination: {
+    margin: '50px auto',
+    display: 'flex',
+    justifyContent: 'center',
+  },
 }));
 
 export default function PostsList() {
   const classes = useStyles();
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
 
   const dispatch = useDispatch();
-  const { data: posts, isLoading } = useSelector((state) => state.posts);
+  const { data: posts, total, isLoading } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
+    dispatch(fetchPostsLoading());
+    dispatch(fetchPosts(page));
+  }, [page]);
 
-  console.log(posts);
+  useEffect(() => {
+    setCount(total);
+  }, [total]);
+
+  const onPageChange = (page) => {
+    setPage(page);
+  };
 
   return (
     <div className={classes.root}>
@@ -38,6 +54,14 @@ export default function PostsList() {
               </Grid>
             ))}
           </Grid>
+
+          <Pagination
+            total={count}
+            pageSize={20}
+            current={page}
+            onChange={onPageChange}
+            className={classes.pagination}
+          />
         </Container>
       )}
     </div>

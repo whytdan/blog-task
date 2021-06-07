@@ -6,6 +6,7 @@ import {
 
 const INIT_STATE = {
   data: [],
+  total: 0,
   error: null,
   isLoading: false,
 };
@@ -16,20 +17,21 @@ export default function postsReducer(state = INIT_STATE, action) {
       return {
         ...state,
         error: null,
-        data: action.payload,
-        loading: false,
+        data: action.payload.data,
+        total: action.payload.total,
+        isLoading: false,
       };
     case FETCH_POSTS_ERROR:
       return {
         ...state,
         data: [],
         error: action.payload,
-        loading: false,
+        isLoading: false,
       };
     case FETCH_POSTS_LOADING:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     default:
       return state;
